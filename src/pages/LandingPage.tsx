@@ -29,7 +29,7 @@ export const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0f0f23] mesh-background text-on-surface">
       {/* Top Navbar Header */}
-      <header className="fixed top-0 left-0 right-0 h-20 bg-[#0f0f23]/60 backdrop-blur-xl border-b border-white/5 z-50 px-margin-desktop flex justify-between items-center max-w-container-max mx-auto">
+      <header className="fixed top-0 left-0 right-0 h-20 bg-[#0f0f23]/60 backdrop-blur-xl border-b border-white/5 z-50 px-margin-mobile md:px-margin-desktop flex justify-between items-center max-w-container-max mx-auto">
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-[#8083ff]"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.95.12-3.5-.5-4.5z"/><path d="m12 15-3-3m1.35-2.35L15 4c1-1 2-1 3 0s1 2 0 3l-5.65 4.65c-.5.35-.65.85-.7 1.35-.05.5-.05 1.5-.05 1.5l-1.5.5c-1.13.38-1.5.38-2.5 0-.5-.2-.5-.5-1-1-.5-.5-.8-1-1-1.5-.38-1-1.13-1.37-1.5-2.5l.5-1.5s1 0 1.5-.05c.5-.05 1-.2 1.35-.7z"/><path d="M15 9h.01"/><path d="M16 8h.01"/></svg>
           <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#c0c1ff] to-[#d0bcff] bg-clip-text text-transparent">OnboardDev</span>
@@ -58,7 +58,7 @@ export const LandingPage: React.FC = () => {
       </header>
 
       {/* Main Container */}
-      <main className="pt-32 pb-24 max-w-container-max mx-auto px-margin-desktop space-y-32">
+      <main className="pt-32 pb-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop space-y-20 sm:space-y-28 md:space-y-32">
         {/* Section 1: Hero Section */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6 text-left animate-fade-in">
@@ -67,7 +67,7 @@ export const LandingPage: React.FC = () => {
               onboarding inteligente por ia
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline-xl leading-tight text-white tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display leading-tight text-white tracking-tight">
               Domine qualquer codebase em <span className="bg-gradient-to-r from-[#8083ff] to-[#4cd7f6] bg-clip-text text-transparent">dias</span>, não semanas
             </h2>
             
@@ -143,7 +143,7 @@ export const LandingPage: React.FC = () => {
         {/* Section 2: Pain Points (O onboarding está quebrado) */}
         <section className="text-center space-y-12">
           <div className="space-y-4">
-            <h3 className="text-3xl md:text-4xl font-bold font-headline-lg text-white">O onboarding de software tradicional está quebrado</h3>
+            <h3 className="text-3xl md:text-4xl font-bold font-display text-white">O onboarding de software tradicional está quebrado</h3>
             <p className="text-on-surface-variant max-w-[620px] mx-auto leading-relaxed text-sm">
               Desenvolvedores perdem muito tempo perdidos em código mal-estruturado ou lendo documentações geradas anos atrás.
             </p>
@@ -165,7 +165,7 @@ export const LandingPage: React.FC = () => {
         {/* Section 3: Features Grid */}
         <section id="features" className="space-y-12">
           <div className="text-center space-y-4">
-            <h3 className="text-3xl md:text-4xl font-bold font-headline-lg text-white">Tudo o que seu time de engenharia precisa</h3>
+            <h3 className="text-3xl md:text-4xl font-bold font-display text-white">Tudo o que seu time de engenharia precisa</h3>
             <p className="text-on-surface-variant max-w-[620px] mx-auto leading-relaxed text-sm">
               Unimos documentação, visualização de código e trilhas em um só lugar de maneira premium.
             </p>
@@ -187,7 +187,7 @@ export const LandingPage: React.FC = () => {
         {/* Section 4: Como funciona (Steps horizontal timeline) */}
         <section id="workflow" className="space-y-16">
           <div className="text-center space-y-4">
-            <h3 className="text-3xl md:text-4xl font-bold font-headline-lg text-white">Configuração rápida em 3 passos</h3>
+            <h3 className="text-3xl md:text-4xl font-bold font-display text-white">Configuração rápida em 3 passos</h3>
             <p className="text-on-surface-variant max-w-[620px] mx-auto leading-relaxed text-sm">
               Automatize a rampa de aprendizado do seu projeto com integração GitHub rápida.
             </p>
@@ -224,7 +224,7 @@ export const LandingPage: React.FC = () => {
         {/* Section 5: Testimonials */}
         <section id="testimonials" className="space-y-12">
           <div className="text-center space-y-4">
-            <h3 className="text-3xl md:text-4xl font-bold font-headline-lg text-white">Validado por líderes de engenharia</h3>
+            <h3 className="text-3xl md:text-4xl font-bold font-display text-white">Validado por líderes de engenharia</h3>
             <p className="text-on-surface-variant max-w-[620px] mx-auto leading-relaxed text-sm">
               Veja o depoimento de quem já acelerou seu processo de onboarding utilizando o OnboardDev.
             </p>
@@ -274,7 +274,7 @@ export const LandingPage: React.FC = () => {
         <section className="primary-gradient p-12 md:p-16 rounded-3xl text-center space-y-8 primary-glow relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
           <div className="space-y-4 max-w-[620px] mx-auto">
-            <h3 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">Pronto para transformar seu onboarding de engenharia?</h3>
+            <h3 className="text-3xl md:text-4xl font-extrabold font-display text-white leading-tight">Pronto para transformar seu onboarding de engenharia?</h3>
             <p className="text-white/80 text-sm leading-relaxed">Acelere seu time hoje. Experimente o protótipo com os dados da demo agora mesmo.</p>
           </div>
           <button 
@@ -287,7 +287,7 @@ export const LandingPage: React.FC = () => {
       </main>
 
       {/* Footer Area */}
-      <footer className="border-t border-white/5 py-12 max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-6">
+      <footer className="border-t border-white/5 py-12 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-[#8083ff]"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.95.12-3.5-.5-4.5z"/><path d="m12 15-3-3m1.35-2.35L15 4c1-1 2-1 3 0s1 2 0 3l-5.65 4.65c-.5.35-.65.85-.7 1.35-.05.5-.05 1.5-.05 1.5l-1.5.5c-1.13.38-1.5.38-2.5 0-.5-.2-.5-.5-1-1-.5-.5-.8-1-1-1.5-.38-1-1.13-1.37-1.5-2.5l.5-1.5s1 0 1.5-.05c.5-.05 1-.2 1.35-.7z"/><path d="M15 9h.01"/><path d="M16 8h.01"/></svg>
           <span className="text-base font-bold tracking-tight text-white">OnboardDev</span>

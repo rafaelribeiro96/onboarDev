@@ -3,9 +3,10 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 interface HeaderProps {
   repositories: { id: string; name: string }[];
+  onToggleSidebar?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ repositories }) => {
+export const Header: React.FC<HeaderProps> = ({ repositories, onToggleSidebar }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
@@ -62,33 +63,45 @@ export const Header: React.FC<HeaderProps> = ({ repositories }) => {
   const crumbs = getBreadcrumbs();
 
   return (
-    <header className="fixed top-0 right-0 w-[calc(100%-240px)] z-30 flex justify-between items-center px-8 h-16 bg-[#111125]/60 backdrop-blur-xl border-b border-white/5 shadow-md">
-      {/* Breadcrumb Navigation */}
-      <div className="flex items-center gap-1.5 text-sm">
-        {crumbs.map((crumb, idx) => {
-          const isLast = idx === crumbs.length - 1;
-          return (
-            <React.Fragment key={crumb.path + idx}>
-              {idx > 0 && <span className="text-on-surface-variant/40">/</span>}
-              {isLast ? (
-                <span className="font-semibold text-primary truncate max-w-[180px]">{crumb.label}</span>
-              ) : (
-                <Link 
-                  to={crumb.path} 
-                  className="text-on-surface-variant/70 hover:text-on-surface hover:underline transition-colors truncate max-w-[150px]"
-                >
-                  {crumb.label}
-                </Link>
-              )}
-            </React.Fragment>
-          );
-        })}
+    <header className="fixed top-0 left-0 right-0 w-full z-30 flex justify-between items-center px-4 sm:px-6 md:pl-[268px] md:pr-8 h-16 bg-[#111125]/60 backdrop-blur-xl border-b border-white/5 shadow-md transition-all duration-300">
+      {/* Left side: Hamburger button (mobile) and Breadcrumb Navigation */}
+      <div className="flex items-center gap-3 overflow-hidden">
+        {onToggleSidebar && (
+          <button 
+            onClick={onToggleSidebar}
+            className="md:hidden flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all cursor-pointer shrink-0"
+            aria-label="Abrir menu"
+          >
+            <span className="material-symbols-outlined text-[24px]">menu</span>
+          </button>
+        )}
+
+        <div className="flex items-center gap-1.5 text-xs sm:text-sm overflow-hidden whitespace-nowrap">
+          {crumbs.map((crumb, idx) => {
+            const isLast = idx === crumbs.length - 1;
+            return (
+              <React.Fragment key={crumb.path + idx}>
+                {idx > 0 && <span className="text-on-surface-variant/40 shrink-0">/</span>}
+                {isLast ? (
+                  <span className="font-semibold text-primary truncate max-w-[120px] sm:max-w-[180px] shrink-0">{crumb.label}</span>
+                ) : (
+                  <Link 
+                    to={crumb.path} 
+                    className="text-on-surface-variant/70 hover:text-on-surface hover:underline transition-colors truncate max-w-[100px] sm:max-w-[150px] shrink-0"
+                  >
+                    {crumb.label}
+                  </Link>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </div>
       </div>
 
       {/* Action items: Search, notification dropdown and profile */}
-      <div className="flex items-center gap-6">
-        {/* Mock Search Bar */}
-        <div className="flex items-center gap-3 bg-[#1a1a2e] px-4 py-2 rounded-full border border-white/5 w-80 shadow-inner group focus-within:border-[#8083ff]/30 transition-all duration-300">
+      <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+        {/* Mock Search Bar (Hidden on mobile) */}
+        <div className="hidden lg:flex items-center gap-3 bg-[#1a1a2e] px-4 py-2 rounded-full border border-white/5 w-64 xl:w-80 shadow-inner group focus-within:border-[#8083ff]/30 transition-all duration-300">
           <span className="material-symbols-outlined text-on-surface-variant/50 text-[20px] group-focus-within:text-[#8083ff] transition-colors">search</span>
           <input 
             className="bg-transparent border-none outline-none focus:ring-0 text-xs w-full placeholder:text-on-surface-variant/40 text-on-surface" 

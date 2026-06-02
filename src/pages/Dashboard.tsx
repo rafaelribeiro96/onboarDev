@@ -33,7 +33,7 @@ export const Dashboard: React.FC = () => {
       {/* Greeting Header & Streak badge */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold font-headline-lg text-white">
+          <h2 className="text-2xl md:text-3xl font-bold font-display text-white">
             {greeting}, Rafael! 👋
           </h2>
           <p className="text-sm text-on-surface-variant mt-1.5 font-medium">

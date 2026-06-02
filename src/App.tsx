@@ -32,6 +32,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 // Global Layout Shell for Protected Pages
 const DashboardLayout: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
     // Populate and load data
@@ -41,16 +42,23 @@ const DashboardLayout: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
 
   return (
     <div className="bg-[#111125] text-on-surface min-h-screen">
-      {/* Persistent Left Sidebar */}
-      <Sidebar onLogout={onLogout} />
+      {/* Persistent Left Sidebar (Collapsible in mobile) */}
+      <Sidebar 
+        onLogout={onLogout} 
+        isOpen={isMobileSidebarOpen} 
+        onClose={() => setIsMobileSidebarOpen(false)} 
+      />
 
-      {/* Main content grid (right to the sidebar) */}
-      <div className="ml-[240px] flex flex-col min-h-screen">
+      {/* Main content grid (right to the sidebar on desktop) */}
+      <div className="md:ml-[240px] ml-0 flex flex-col min-h-screen transition-all duration-300">
         {/* Persistent Top Nav Bar */}
-        <Header repositories={repositories} />
+        <Header 
+          repositories={repositories} 
+          onToggleSidebar={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)} 
+        />
 
         {/* Padding and responsive view area */}
-        <main className="flex-1 pt-24 px-8 pb-16 max-w-7xl w-full mx-auto">
+        <main className="flex-1 pt-24 px-4 sm:px-6 md:px-8 pb-16 max-w-[1440px] w-full mx-auto">
           <Routes>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="repository/:id" element={<RepositoryMap />} />
